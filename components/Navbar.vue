@@ -20,6 +20,11 @@
                     Users
                 </nuxt-link>
             </li>
+            <li class="nav-item">
+                <nuxt-link active-class="active" class="nav-link" to="/posts">
+                    Posts
+                </nuxt-link>
+            </li>
              <li class="nav-item" v-if="!hasToken">
                 <nuxt-link active-class="active" class="nav-link" to="/login">
                     Login

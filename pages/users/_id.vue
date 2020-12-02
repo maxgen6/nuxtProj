@@ -11,7 +11,6 @@
 <script>
 export default {
     validate({params}) {
-        console.log(params);
         return /^\d+$/.test(params.id)
     },
     async asyncData({$axios, params}) {
