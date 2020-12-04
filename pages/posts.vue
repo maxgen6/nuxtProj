@@ -23,7 +23,7 @@ export default {
     },
     data: () => ({
         postTitle: 'Posts page',
-        search: []
+        search: ''
     }),
     computed: {
         posts() {

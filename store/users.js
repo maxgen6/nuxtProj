@@ -16,5 +16,8 @@ export const actions = {
 };
 
 export const getters = { 
-    users: s => s.users
+    users: s => s.users,
+    filterUsers: state => {
+        return state.users.filter(item => item.sort())
+    }
 };
