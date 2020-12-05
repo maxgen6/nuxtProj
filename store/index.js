@@ -1,5 +1,6 @@
 export const state = () => ({
-    token : null
+    token : null, 
+    getFilter : null
 });
 
 export const mutations = {
@@ -8,6 +9,12 @@ export const mutations = {
     },
     clearToken(state) {
         state.token = null;
+    },
+    setFilter(state, getFilter) {
+        state.getFilter = getFilter;
+    },
+    clearFilter(state) {
+        state.getFilter = null;
     }
 };
 
@@ -20,9 +27,16 @@ export const actions = {
     },
     logout({commit}) {
         commit('clearToken')
+    },
+    filterOn({commit}) {
+        commit('setFilter', 'truegetFilter')
+    },
+    filterOff({commit}) {
+        commit('clearFilter')
     }
 };
 
 export const getters = { 
-    hasToken: s => !!s.token
+    hasToken: s => !!s.token,
+    hasFilter: s => !!s.getFilter
 };

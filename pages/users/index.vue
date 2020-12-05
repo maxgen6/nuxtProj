@@ -1,9 +1,12 @@
 <template>
     <section>
         <h1>{{pageTitle}}</h1>
-        <a href="#" @click.prevent="filterName='name'"> A-Z</a>
+        <a href="#" @click.prevent="openFilter"> A-Z</a>
         <ul>
-            <li v-for="user of users" :key="user.id">
+            <li v-if="!hasFilter" v-for="user of users" :key="user.id">
+                <a href="#" @click.prevent="openUser(user)">{{user.name}}</a>
+            </li>
+            <li v-else v-for="user of filter" :key="user.id">
                 <a href="#" @click.prevent="openUser(user)">{{user.name}}</a>
             </li>
         </ul>
@@ -27,7 +30,10 @@ export default {
             return this.$store.getters['users/users']
         },
         filter() {
-            return this.$store.getters.filterUsers
+            return this.$store.getters['usersFilter/usersFilter']
+        },
+        hasFilter() {
+            return this.$store.getters.hasFilter
         }
         // sortedList() {
         //     switch(this.filterName) {
@@ -38,7 +44,12 @@ export default {
     methods: {
         openUser(user) {
             this.$router.push('/users/' + user.id)
+        },
+        openFilter(state) {
+            this.$store.getters.hasFilter;
+            console.log(1);
         }
+
     }
     // sortName : function(d1, d2) {
     //     return (d1.name.toLowerCase() > d2.name.toLowerCase()) ? 1 : -1;
